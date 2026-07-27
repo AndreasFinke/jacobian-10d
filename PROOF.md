@@ -7,48 +7,71 @@
 
 There is an explicit polynomial map over the rationals,
 
-$$
+```math
 G:\mathbb{Q}^{10}\longrightarrow\mathbb{Q}^{10},
-$$
+```
 
 which, after base change, is also a polynomial map on $\mathbb{C}^{10}$. Its total degree is three, its Jacobian determinant is the nonzero constant
 
-$$
+```math
 \det JG=-2,
-$$
+```
 
 and one fiber contains three distinct rational points. Therefore $G$ is a noninjective cubic Keller map.
 
 Use the ordered variables
 
-$$
+```math
 (x,y,z,a,b,c,d,e,h,q).
-$$
+```
 
-The ten coordinates are
+The ten coordinates are:
 
-$$
-\begin{aligned}
-G_1={}&-ab+aez-3ay^2-be^2+de+dxy+3e^2z-7ey^2\\
-     &\quad+3xyz+4y^2+z,\\[2mm]
-G_2={}&-3ac-3axz-9ay-3ce^2+3eh-6exz+3hxy\\
-     &\quad+12xy^2+3xz+y,\\[2mm]
-G_3={}&cq+cx^2+qxz+3qy+2x,\\
-G_4={}&a-e^2-2exy,\\
-G_5={}&b+xyz+3y^2,\\
-G_6={}&c+xz+3y,\\
-G_7={}&az-be+bxy+d+3ez-3xyz-7y^2,\\
-G_8={}&e+xy,\\
-G_9={}&-ce+cxy+h-2xz,\\
-G_{10}={}&q+x^2.
-\end{aligned}
-$$
+```math
+G_1=-ab+aez-3ay^2-be^2+de+dxy+3e^2z-7ey^2+3xyz+4y^2+z.
+```
+
+```math
+G_2=-3ac-3axz-9ay-3ce^2+3eh-6exz+3hxy+12xy^2+3xz+y.
+```
+
+```math
+G_3=cq+cx^2+qxz+3qy+2x.
+```
+
+```math
+G_4=a-e^2-2exy.
+```
+
+```math
+G_5=b+xyz+3y^2.
+```
+
+```math
+G_6=c+xz+3y.
+```
+
+```math
+G_7=az-be+bxy+d+3ez-3xyz-7y^2.
+```
+
+```math
+G_8=e+xy.
+```
+
+```math
+G_9=-ce+cxy+h-2xz.
+```
+
+```math
+G_{10}=q+x^2.
+```
 
 Their total degrees are
 
-$$
+```math
 (3,3,3,3,3,2,3,2,3,2).
-$$
+```
 
 The expanded map contains 50 monomial terms.
 
@@ -56,159 +79,125 @@ The expanded map contains 50 monomial terms.
 
 Define
 
-$$
-\begin{aligned}
-P_0={}&\left(0,0,-\frac14,0,0,0,0,0,0,0\right),\\[1mm]
-P_+={}&\left(1,-\frac32,\frac{13}{2},-\frac94,3,-2,
--\frac{153}{8},\frac32,7,-1\right),\\[1mm]
-P_-={}&\left(-1,\frac32,\frac{13}{2},-\frac94,3,2,
--\frac{153}{8},\frac32,-7,-1\right).
-\end{aligned}
-$$
+```math
+P_0=\left(0,0,-\frac14,0,0,0,0,0,0,0\right).
+```
+
+```math
+P_+=\left(1,-\frac32,\frac{13}{2},-\frac94,3,-2,-\frac{153}{8},\frac32,7,-1\right).
+```
+
+```math
+P_-=\left(-1,\frac32,\frac{13}{2},-\frac94,3,2,-\frac{153}{8},\frac32,-7,-1\right).
+```
 
 These points are pairwise distinct and satisfy
 
-$$
-G(P_0)=G(P_+)=G(P_-)
-=\left(-\frac14,0,0,0,0,0,0,0,0,0\right).
-$$
+```math
+G(P_0)=G(P_+)=G(P_-)=\left(-\frac14,0,0,0,0,0,0,0,0,0\right).
+```
 
 Everything in this certificate is exact over $\mathbb{Q}$; no numerical approximation is used.
 
 ## Construction
 
-Start with the known three-dimensional map. Put
+Start with the known three-dimensional map. Put $u=1+xy$ and define:
 
-$$
-u=1+xy
-$$
-
-and define
-
-$$
-\begin{aligned}
-f_1&=u^3z+y^2u(4+3xy),\\
-f_2&=y+3xu^2z+3xy^2(4+3xy),\\
-f_3&=2x-3x^2y-x^3z.
-\end{aligned}
-$$
+- $f_1=u^3z+y^2u(4+3xy)$,
+- $f_2=y+3xu^2z+3xy^2(4+3xy)$,
+- $f_3=2x-3x^2y-x^3z$.
 
 This map has
 
-$$
+```math
 \det Jf=-2
-$$
+```
 
 and the three-point collision in its first three variables.
 
 ### Source automorphism
 
-Adjoin seven variables and define
+Adjoin seven variables and define:
 
-$$
-\begin{aligned}
-A&=a+x^2y^2,\\
-B&=b+xyz+3y^2,\\
-C&=c+xz+3y,\\
-D&=d+xy(b-3z)+az-e(b-3z)-7y^2,\\
-E&=e+xy,\\
-H&=h+xyc-ce-2xz,\\
-Q&=q+x^2.
-\end{aligned}
-$$
+- $A=a+x^2y^2$,
+- $B=b+xyz+3y^2$,
+- $C=c+xz+3y$,
+- $D=d+xy(b-3z)+az-e(b-3z)-7y^2$,
+- $E=e+xy$,
+- $H=h+xyc-ce-2xz$,
+- $Q=q+x^2$.
 
 Set
 
-$$
-S(x,y,z,a,b,c,d,e,h,q)
-=(x,y,z,A,B,C,D,E,H,Q).
-$$
+```math
+S(x,y,z,a,b,c,d,e,h,q)=(x,y,z,A,B,C,D,E,H,Q).
+```
 
 This is a polynomial automorphism. Its inverse is obtained polynomially in the following order:
 
-$$
-\begin{aligned}
-e&=E-xy,\\
-a&=A-x^2y^2,\\
-b&=B-xyz-3y^2,\\
-c&=C-xz-3y,\\
-q&=Q-x^2,\\
-d&=D-xy(b-3z)-az+e(b-3z)+7y^2,\\
-h&=H-xyc+ce+2xz.
-\end{aligned}
-$$
+- $e=E-xy$,
+- $a=A-x^2y^2$,
+- $b=B-xyz-3y^2$,
+- $c=C-xz-3y$,
+- $q=Q-x^2$,
+- $d=D-xy(b-3z)-az+e(b-3z)+7y^2$,
+- $h=H-xyc+ce+2xz$.
 
 In particular,
 
-$$
+```math
 \det JS=1.
-$$
+```
 
 ### Target automorphism
 
-For coordinates $(U_1,U_2,U_3,A,B,C,D,E,H,Q)$, define
+For coordinates $(U_1,U_2,U_3,A,B,C,D,E,H,Q)$, define $T$ by:
 
-$$
-\begin{aligned}
-T(U_1,U_2,U_3,A,B,C,D,E,H,Q)
-=\big(&U_1-AB+DE,\\
-      &U_2-3AC+3HE,\\
-      &U_3+CQ,\\
-      &A-E^2,B,C,D,E,H,Q\big).
-\end{aligned}
-$$
+- $V_1=U_1-AB+DE$,
+- $V_2=U_2-3AC+3HE$,
+- $V_3=U_3+CQ$,
+- $V_4=A-E^2$,
+- $(V_5,V_6,V_7,V_8,V_9,V_{10})=(B,C,D,E,H,Q)$.
 
 To invert $T$, first recover
 
-$$
+```math
 A=V_4+V_8^2,
-$$
+```
 
-and then use
+and then use:
 
-$$
-\begin{aligned}
-U_1&=V_1+AV_5-V_7V_8,\\
-U_2&=V_2+3AV_6-3V_9V_8,\\
-U_3&=V_3-V_6V_{10}.
-\end{aligned}
-$$
+- $U_1=V_1+AV_5-V_7V_8$,
+- $U_2=V_2+3AV_6-3V_9V_8$,
+- $U_3=V_3-V_6V_{10}$.
 
 The remaining seven coordinates are read off directly. Hence $T$ is a polynomial automorphism and
 
-$$
+```math
 \det JT=1.
-$$
+```
 
 ### Composition
 
 The displayed cubic map is exactly
 
-$$
-G
-=
-T\circ\left(f\times\operatorname{id}_{\mathbb{C}^{7}}\right)\circ S.
-$$
+```math
+G=T\circ\left(f\times\operatorname{id}_{\mathbb{C}^{7}}\right)\circ S.
+```
 
 Therefore
 
-$$
-\det JG
-=
-(\det JT)(\det Jf)(\det JS)
-=
-(1)(-2)(1)
-=
--2.
-$$
+```math
+\det JG=(\det JT)(\det Jf)(\det JS)=(1)(-2)(1)=-2.
+```
 
 Expanding the composition gives precisely the ten polynomials displayed above.
 
 For each of the three colliding points of $f$, choose the seven source variables so that
 
-$$
+```math
 A=B=C=D=E=H=Q=0.
-$$
+```
 
 This gives the points $P_0,P_+,P_-$ above and transports the collision to $G$.
 
@@ -216,40 +205,29 @@ This gives the points $P_0,P_+,P_-$ above and transports the collision to $G$.
 
 The SymPy verifier differentiates the expanded ten-coordinate map and partitions its Jacobian into blocks,
 
-$$
-JG=
-\begin{pmatrix}
-J_{xx} & J_{xw}\\
-J_{wx} & J_{ww}
-\end{pmatrix},
-$$
+```math
+JG=\begin{pmatrix}J_{xx}&J_{xw}\\J_{wx}&J_{ww}\end{pmatrix},
+```
 
 where the first block row and column correspond to $(x,y,z)$ and the second to $(a,b,c,d,e,h,q)$.
 
 It verifies exactly that
 
-$$
+```math
 \det J_{ww}=1
-$$
+```
 
 and computes the Schur complement
 
-$$
+```math
 J_{xx}-J_{xw}J_{ww}^{-1}J_{wx}.
-$$
+```
 
 The determinant of this $3\times3$ matrix is exactly $-2$. By the block determinant identity,
 
-$$
-\det JG
-=
-\det J_{ww}\,
-\det\!\left(
-J_{xx}-J_{xw}J_{ww}^{-1}J_{wx}
-\right)
-=
--2.
-$$
+```math
+\det JG=\det J_{ww}\,\det\!\left(J_{xx}-J_{xw}J_{ww}^{-1}J_{wx}\right)=-2.
+```
 
 The same script checks all coordinate degrees and evaluates the three collision points over exact rationals.
 
@@ -287,13 +265,7 @@ The dimension-ten member is the first map in this ladder for which every coordin
 
 The public dimension-19 construction uses a mechanical Bass--Connell--Wright reduction with sixteen carrier variables. The earlier carrier audit checked all coordinate subsets of those sixteen variables and found that no proper subset remains cubic.
 
-That calculation does not cover nonlinear recombinations of carriers or a different stable-equivalence circuit. The construction here does both. It factors sums and shares the expressions
-
-$$
-xy,\qquad xyz+3y^2,\qquad xz+3y
-$$
-
-across several coordinates, while the coupled carriers $D$ and $H$ absorb the cross-terms created by the source and target shears. It therefore requires seven added variables rather than sixteen.
+That calculation does not cover nonlinear recombinations of carriers or a different stable-equivalence circuit. The construction here does both. It factors sums and shares the expressions $xy$, $xyz+3y^2$, and $xz+3y$ across several coordinates, while the coupled carriers $D$ and $H$ absorb the cross-terms created by the source and target shears. It therefore requires seven added variables rather than sixteen.
 
 ## Claim boundary
 
