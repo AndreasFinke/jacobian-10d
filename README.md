@@ -2,25 +2,25 @@
 
 This repository gives an exact certificate for an explicit polynomial map
 
-$$
+```math
 G:\mathbb{Q}^{10}\longrightarrow\mathbb{Q}^{10}
-$$
+```
 
 with coordinate degrees
 
-$$
+```math
 (3,3,3,3,3,2,3,2,3,2),
-$$
+```
 
 constant Jacobian determinant
 
-$$
+```math
 \det JG=-2,
-$$
+```
 
 and three distinct rational points with the same image. Thus $G$ is a noninjective cubic Keller map.
 
-The construction, exact collision, and algebraic factorization proof are given in [PROOF.md](PROOF.md).
+The construction, exact collision, and algebraic factorization proof are given in [`PROOF.md`](PROOF.md).
 
 ## Verify with Python and SymPy
 
