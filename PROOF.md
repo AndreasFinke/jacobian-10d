@@ -179,10 +179,10 @@ The remaining seven coordinates are read off directly. Hence $T$ is a polynomial
 
 ### Composition
 
-The displayed cubic map is exactly
+Let $I_7$ denote the identity map on $\mathbb{C}^7$. The displayed cubic map is exactly
 
 ```math
-G=T\circ\left(f\times\operatorname{id}_{\mathbb{C}^{7}}\right)\circ S.
+G=T\circ\left(f\times I_7\right)\circ S.
 ```
 
 Therefore
