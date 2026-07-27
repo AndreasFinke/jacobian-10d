@@ -1,39 +1,38 @@
-# A cubic Keller counterexample in dimension 10
+# An explicit cubic noninjective Keller map in dimension 10
 
-**Date:** 26 July 2026
-**Status:** exact characteristic-zero certificate; publication priority not asserted
+**Date:** 26 July 2026  
+**Status:** exact characteristic-zero certificate; no claim of minimality or publication priority
 
 ## Result
 
-There is an explicit polynomial map
+There is an explicit polynomial map over the rationals,
 
-\[
-G:\mathbb C^{10}\longrightarrow\mathbb C^{10}
-\]
+$$
+G:\mathbb{Q}^{10}\longrightarrow\mathbb{Q}^{10},
+$$
 
-of total degree three with
+which, after base change, is also a polynomial map on $\mathbb{C}^{10}$. Its total degree is three, its Jacobian determinant is the nonzero constant
 
-\[
-\det JG=-2
-\]
+$$
+\det JG=-2,
+$$
 
-identically, and with a fiber containing three distinct rational points. Thus
-`G` is a noninjective cubic Keller map.
+and one fiber contains three distinct rational points. Therefore $G$ is a noninjective cubic Keller map.
 
-The variables are ordered as
+Use the ordered variables
 
-\[
+$$
 (x,y,z,a,b,c,d,e,h,q).
-\]
+$$
 
 The ten coordinates are
 
-\[
+$$
 \begin{aligned}
-G*1={}&-ab+aez-3ay^2-be^2+de+dxy+3e^2z-7ey^2\\
-&\qquad+3xyz+4y^2+z,\\
+G_1={}&-ab+aez-3ay^2-be^2+de+dxy+3e^2z-7ey^2\\
+     &\quad+3xyz+4y^2+z,\\[2mm]
 G_2={}&-3ac-3axz-9ay-3ce^2+3eh-6exz+3hxy\\
-&\qquad+12xy^2+3xz+y,\\
+     &\quad+12xy^2+3xz+y,\\[2mm]
 G_3={}&cq+cx^2+qxz+3qy+2x,\\
 G_4={}&a-e^2-2exy,\\
 G_5={}&b+xyz+3y^2,\\
@@ -41,58 +40,72 @@ G_6={}&c+xz+3y,\\
 G_7={}&az-be+bxy+d+3ez-3xyz-7y^2,\\
 G_8={}&e+xy,\\
 G_9={}&-ce+cxy+h-2xz,\\
-G*{10}={}&q+x^2.
+G_{10}={}&q+x^2.
 \end{aligned}
-\]
+$$
 
-The component degrees are
+Their total degrees are
 
-```text
-(3,3,3,3,3,2,3,2,3,2)
-```
+$$
+(3,3,3,3,3,2,3,2,3,2).
+$$
 
-and the expanded map contains 50 monomial terms.
+The expanded map contains 50 monomial terms.
 
 ## Exact collision
 
-The three distinct points
+Define
 
-\[
+$$
 \begin{aligned}
-P*0={}&(0,0,-\tfrac14,0,0,0,0,0,0,0),\\
-P*+={}&(1,-\tfrac32,\tfrac{13}2,-\tfrac94,3,-2,
--\tfrac{153}8,\tfrac32,7,-1),\\
-P\_-={}&(-1,\tfrac32,\tfrac{13}2,-\tfrac94,3,2,
--\tfrac{153}8,\tfrac32,-7,-1)
+P_0={}&\left(0,0,-\frac14,0,0,0,0,0,0,0\right),\\[1mm]
+P_+={}&\left(1,-\frac32,\frac{13}{2},-\frac94,3,-2,
+-\frac{153}{8},\frac32,7,-1\right),\\[1mm]
+P_-={}&\left(-1,\frac32,\frac{13}{2},-\frac94,3,2,
+-\frac{153}{8},\frac32,-7,-1\right).
 \end{aligned}
-\]
+$$
 
-satisfy
+These points are pairwise distinct and satisfy
 
-\[
-G(P*0)=G(P*+)=G(P\_-)=(-\tfrac14,0,0,0,0,0,0,0,0,0).
-\]
+$$
+G(P_0)=G(P_+)=G(P_-)
+=\left(-\frac14,0,0,0,0,0,0,0,0,0\right).
+$$
 
-Everything here is over the rationals; no numerical approximation is used.
+Everything in this certificate is exact over $\mathbb{Q}$; no numerical approximation is used.
 
 ## Construction
 
-Start from the dimension-three map, with `u=1+xy`,
+Start with the known three-dimensional map. Put
 
-\[
+$$
+u=1+xy
+$$
+
+and define
+
+$$
 \begin{aligned}
 f_1&=u^3z+y^2u(4+3xy),\\
 f_2&=y+3xu^2z+3xy^2(4+3xy),\\
 f_3&=2x-3x^2y-x^3z.
 \end{aligned}
-\]
+$$
 
-Its Jacobian determinant is `-2`, and it has the three-point collision stated
-in the existing repository.
+This map has
 
-Adjoin seven carrier variables and apply the following source automorphism:
+$$
+\det Jf=-2
+$$
 
-\[
+and the three-point collision in its first three variables.
+
+### Source automorphism
+
+Adjoin seven variables and define
+
+$$
 \begin{aligned}
 A&=a+x^2y^2,\\
 B&=b+xyz+3y^2,\\
@@ -102,18 +115,18 @@ E&=e+xy,\\
 H&=h+xyc-ce-2xz,\\
 Q&=q+x^2.
 \end{aligned}
-\]
+$$
 
-Thus
+Set
 
-\[
-S(x,y,z,a,b,c,d,e,h,q)=(x,y,z,A,B,C,D,E,H,Q).
-\]
+$$
+S(x,y,z,a,b,c,d,e,h,q)
+=(x,y,z,A,B,C,D,E,H,Q).
+$$
 
-This is a polynomial automorphism. One explicit inverse is obtained in the
-order
+This is a polynomial automorphism. Its inverse is obtained polynomially in the following order:
 
-\[
+$$
 \begin{aligned}
 e&=E-xy,\\
 a&=A-x^2y^2,\\
@@ -123,127 +136,173 @@ q&=Q-x^2,\\
 d&=D-xy(b-3z)-az+e(b-3z)+7y^2,\\
 h&=H-xyc+ce+2xz.
 \end{aligned}
-\]
+$$
 
-In particular, `det(JS)=1`.
+In particular,
 
-Next apply the target automorphism
+$$
+\det JS=1.
+$$
 
-\[
+### Target automorphism
+
+For coordinates $(U_1,U_2,U_3,A,B,C,D,E,H,Q)$, define
+
+$$
 \begin{aligned}
-T(U_1,U_2,U_3,A,B,C,D,E,H,Q)=ig(&U_1-AB+DE,\\
-&U_2-3AC+3HE,\\
-&U_3+CQ,\\
-&A-E^2,B,C,D,E,H,Q\big).
+T(U_1,U_2,U_3,A,B,C,D,E,H,Q)
+=\big(&U_1-AB+DE,\\
+      &U_2-3AC+3HE,\\
+      &U_3+CQ,\\
+      &A-E^2,B,C,D,E,H,Q\big).
 \end{aligned}
-\]
+$$
 
-Its inverse is polynomial: recover `A=V_4+V_8^2`, then
+To invert $T$, first recover
 
-\[
+$$
+A=V_4+V_8^2,
+$$
+
+and then use
+
+$$
 \begin{aligned}
-U*1&=V_1+AV_5-V_7V_8,\\
+U_1&=V_1+AV_5-V_7V_8,\\
 U_2&=V_2+3AV_6-3V_9V_8,\\
-U_3&=V_3-V_6V*{10},
+U_3&=V_3-V_6V_{10}.
 \end{aligned}
-\]
+$$
 
-with the other seven coordinates read off directly. Hence `det(JT)=1`.
+The remaining seven coordinates are read off directly. Hence $T$ is a polynomial automorphism and
 
-The displayed map is exactly
+$$
+\det JT=1.
+$$
 
-\[
-G=T\circ(f\times\operatorname{id}\_{\mathbb C^7})\circ S.
-\]
+### Composition
 
-Consequently
+The displayed cubic map is exactly
 
-\[
-\det JG=(\det JT)(\det Jf)(\det JS)=-2.
-\]
+$$
+G
+=
+T\circ\left(f\times\operatorname{id}_{\mathbb{C}^{7}}\right)\circ S.
+$$
 
-Expanding this composition gives precisely the ten cubic polynomials above.
-The collision is transported by taking the seven carrier outputs
-`A=B=C=D=E=H=Q=0` over each of the three colliding points of `f`.
+Therefore
 
-## Independent determinant check
+$$
+\det JG
+=
+(\det JT)(\det Jf)(\det JS)
+=
+(1)(-2)(1)
+=
+-2.
+$$
 
-The verifier does not rely only on the composition argument. It differentiates
-the expanded ten-coordinate map, partitions its Jacobian as
+Expanding the composition gives precisely the ten polynomials displayed above.
 
-\[
-JG=\begin{pmatrix}J*{xx}&J*{xw}\\J*{wx}&J*{ww}\end{pmatrix},
-\]
+For each of the three colliding points of $f$, choose the seven source variables so that
 
-checks `det(Jww)=1`, computes `Jww^{-1}` exactly, and proves entry by entry that
+$$
+A=B=C=D=E=H=Q=0.
+$$
 
-\[
-J*{xx}-J*{xw}J*{ww}^{-1}J*{wx}=Jf.
-\]
+This gives the points $P_0,P_+,P_-$ above and transports the collision to $G$.
 
-The `10 x 10` determinant is therefore exactly `-2`. Three additional full
-matrix determinants are evaluated at independent integer points as an indexing
-cross-check.
+## Independent symbolic verification
+
+The SymPy verifier differentiates the expanded ten-coordinate map and partitions its Jacobian into blocks,
+
+$$
+JG=
+\begin{pmatrix}
+J_{xx} & J_{xw}\\
+J_{wx} & J_{ww}
+\end{pmatrix},
+$$
+
+where the first block row and column correspond to $(x,y,z)$ and the second to $(a,b,c,d,e,h,q)$.
+
+It verifies exactly that
+
+$$
+\det J_{ww}=1
+$$
+
+and computes the Schur complement
+
+$$
+J_{xx}-J_{xw}J_{ww}^{-1}J_{wx}.
+$$
+
+The determinant of this $3\times3$ matrix is exactly $-2$. By the block determinant identity,
+
+$$
+\det JG
+=
+\det J_{ww}\,
+\det\!\left(
+J_{xx}-J_{xw}J_{ww}^{-1}J_{wx}
+\right)
+=
+-2.
+$$
+
+The same script checks all coordinate degrees and evaluates the three collision points over exact rationals.
 
 Run:
 
-```sh
-python3 tools/verify_cubic10.py
-python3 tools/verify_reduction_ladder.py
+```bash
+python3 -m pip install -r requirements.txt
+python3 verify.py
 ```
 
-Expected final line:
+Expected output includes:
 
 ```text
-CERTIFIED: cubic noninjective Keller map C^10 -> C^10 with det J = -2.
+degrees: [3, 3, 3, 3, 3, 2, 3, 2, 3, 2]
+det(Jg): -2
+common image: (-1/4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 ```
+
+The independent Wolfram Language calculation is in [`verify.wl`](verify.wl).
 
 ## Reduction ladder
 
-The same factorization was found by progressively sharing nonlinear pieces.
-It gives a compact stable-equivalence ladder from the original `(dimension,
-degree)=(3,7)` map:
+The same factorization gives the following stable-equivalence ladder from the original degree-seven map in dimension three:
 
-| dimension | degree | added carriers | target reduction                                                        |
-| --------: | -----: | -------------: | ----------------------------------------------------------------------- |
-|         5 |      6 |              2 | cancel the degree-seven product with `AB`                               |
-|         6 |      5 |              3 | share `x^2y^2`, `xyz+3y^2`, and `xz+3y`                                 |
-|         9 |      4 |              6 | add the coupled corrections `DE` and `3HE`, then replace `A` by `A-E^2` |
-|        10 |      3 |              7 | add `Q=q+x^2` and cancel the last quartic as `CQ`                       |
+| Dimension | Degree | Added variables | Main reduction |
+|---:|---:|---:|---|
+| 5 | 6 | 2 | Cancel the degree-seven product using $AB$ |
+| 6 | 5 | 3 | Share $x^2y^2$, $xyz+3y^2$, and $xz+3y$ |
+| 9 | 4 | 6 | Add the coupled corrections $DE$ and $3HE$, then replace $A$ by $A-E^2$ |
+| 10 | 3 | 7 | Add $Q=q+x^2$ and cancel the remaining quartic using $CQ$ |
 
-The dimension-ten member is the first point in this ladder where every
-coordinate is cubic.
+The dimension-ten member is the first map in this ladder for which every coordinate is cubic.
 
-## Relation to the earlier dimension-19 cubic map
+## Relation to the earlier dimension-19 construction
 
-The public dimension-19 construction applies a mechanical
-Bass--Connell--Wright reduction with sixteen carrier variables. The repository's
-existing carrier audit checks all coordinate subsets of those sixteen carriers
-and correctly finds that no proper subset remains cubic. That calculation does
-not cover nonlinear recombination of carriers or a different stable-equivalence
-circuit.
+The public dimension-19 construction uses a mechanical Bass--Connell--Wright reduction with sixteen carrier variables. The earlier carrier audit checked all coordinate subsets of those sixteen variables and found that no proper subset remains cubic.
 
-The construction here is of the latter kind. It factors _sums_ and shares the
-three expressions
+That calculation does not cover nonlinear recombinations of carriers or a different stable-equivalence circuit. The construction here does both. It factors sums and shares the expressions
 
-```text
-x*y,
-xyz + 3*y^2,
-xz + 3*y,
-```
+$$
+xy,\qquad xyz+3y^2,\qquad xz+3y
+$$
 
-across several coordinates, while the coupled corrections `D` and `H` absorb
-all cross-terms created by the source and target shears. It therefore uses
-seven rather than sixteen added variables.
+across several coordinates, while the coupled carriers $D$ and $H$ absorb the cross-terms created by the source and target shears. It therefore requires seven added variables rather than sixteen.
 
-## Claim boundary and priority
+## Claim boundary
 
-What is certified here is the explicit map, its total degree, its constant
-Jacobian determinant, and its exact collision. No minimality theorem is
-claimed: a cubic counterexample in dimensions 4 through 9 may still exist.
+The repository certifies:
 
-Targeted public searches on 26 July 2026 found the dimension-19 mechanical
-reduction and its explicit statement that the gap between dimensions 4 and 19
-was open, but found no earlier dimension-10 cubic construction. Because the
-subject is developing on a day-scale, novelty and priority should be checked
-carefully.
+- the explicit polynomial map;
+- total degree three;
+- the exact identity $\det JG=-2$;
+- three distinct exact rational preimages of one point;
+- the source/target stable-equivalence factorization.
+
+It does **not** prove that dimension ten is minimal. Cubic counterexamples in dimensions four through nine may still exist. Publication priority is also not asserted here.
