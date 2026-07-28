@@ -1,12 +1,53 @@
-# Cubic noninjective Keller map in dimension 10
+# Small explicit Keller counterexamples from the degree-seven map
 
-This repository gives an exact certificate for an explicit polynomial map
+This repository now contains exact certificates for three stable reductions of the known dimension-three counterexample:
+
+| Dimension | Total degree | Component degrees |
+|---:|---:|---|
+| 4 | 6 | $(5,6,4,3)$ |
+| 5 | 5 | $(5,5,4,3,2)$ |
+| 10 | 3 | $(3,3,3,3,3,2,3,2,3,2)$ |
+
+Every displayed map has constant Jacobian determinant
+
+```math
+-2
+```
+
+and three distinct rational points with one exact common image.
+
+The particularly small new constructions are documented in [`SMALLER_MAPS.md`](SMALLER_MAPS.md). They come from the elementary cancellations
+
+```math
+F_1+y^3F_3=3x^2y^2z+9xy^3+3xyz+4y^2+z
+```
+
+and
+
+```math
+F_2+3y^2F_3=6x^2yz+18xy^2+3xz+y.
+```
+
+One register variable gives a degree-six counterexample in four variables; two registers give a degree-five counterexample in five variables.
+
+## Verify the four- and five-dimensional maps
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 verify_small_maps.py
+```
+
+The script expands both Jacobian determinants directly over exact rational polynomial arithmetic and verifies both three-point collisions.
+
+## Cubic map in dimension ten
+
+The cubic construction is an explicit polynomial map
 
 ```math
 G:\mathbb{Q}^{10}\longrightarrow\mathbb{Q}^{10}
 ```
 
-with coordinate degrees
+with component degrees
 
 ```math
 (3,3,3,3,3,2,3,2,3,2),
@@ -18,37 +59,23 @@ constant Jacobian determinant
 \det JG=-2,
 ```
 
-and three distinct rational points with the same image. Thus $G$ is a noninjective cubic Keller map.
+and three distinct rational points with the same image. Its construction and stable-equivalence proof are in [`PROOF.md`](PROOF.md).
 
-The construction, exact collision, and algebraic factorization proof are given in [`PROOF.md`](PROOF.md).
-
-## Verify with Python and SymPy
+Verify it with:
 
 ```bash
-python3 -m pip install -r requirements.txt
 python3 verify.py
 ```
 
-The verifier uses exact rational polynomial arithmetic. It checks the coordinate degrees, constructs the symbolic $10\times10$ Jacobian, proves the determinant through an exact block-determinant calculation, and evaluates the three rational preimages.
-
-Expected final data:
-
-```text
-det(Jg): -2
-common image: (-1/4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-```
-
-No floating-point approximation or sampling is used.
-
-## Verify with Wolfram Language
-
-Evaluate [`verify.wl`](verify.wl) in Mathematica or a Wolfram Cloud notebook. It computes the symbolic determinant, verifies that the three source points are distinct, and displays their single common image.
+The verifier constructs the symbolic $10\times10$ Jacobian, proves the determinant by an exact block-determinant calculation, and evaluates the rational collision. The independent Wolfram Language calculation is in [`verify.wl`](verify.wl).
 
 ## Files
 
-- [`PROOF.md`](PROOF.md) — construction and algebraic proof
-- [`verify.py`](verify.py) — concise exact SymPy certificate
-- [`verify.wl`](verify.wl) — concise Wolfram Language certificate
-- [`cubic10_map.json`](cubic10_map.json) — machine-readable expanded map and collision data
+- [`SMALLER_MAPS.md`](SMALLER_MAPS.md) — the four-dimensional degree-six and five-dimensional degree-five constructions
+- [`verify_small_maps.py`](verify_small_maps.py) — direct exact SymPy certificates for those maps
+- [`PROOF.md`](PROOF.md) — construction and proof of the ten-dimensional cubic map
+- [`verify.py`](verify.py) — exact SymPy certificate for the cubic map
+- [`verify.wl`](verify.wl) — independent Wolfram Language certificate
+- [`cubic10_map.json`](cubic10_map.json) — machine-readable cubic map and collision data
 
-The construction is derived from the known three-dimensional degree-seven counterexample by a polynomial stable-equivalence compression. No claim of minimality is made.
+All three maps are stable-equivalent compressions of the original three-dimensional degree-seven counterexample. They do not provide a new geometric source of noninjectivity, and no claim of optimality or publication priority is made.
