@@ -93,6 +93,79 @@ assert degree_vector(g5, v5) == [5, 5, 4, 3, 2]
 assert s.factor(g5.jacobian(v5).det()) == -2
 image5 = certify_collision(g5, v5, points5)
 
+# Five-register stable reduction: dimension 8, degree 4.
+v8 = (x, y, z, a, b, d, e, h)
+g8 = s.Matrix(
+    [
+        -a * b
+        + a * e * z
+        - 3 * a * y**2
+        - b * e**2
+        + d * e
+        + d * x * y
+        + 3 * e**2 * z
+        - 7 * e * y**2
+        + 3 * x * y * z
+        + 4 * y**2
+        + z,
+        3 * e**2 * x * z
+        + 9 * e**2 * y
+        + 3 * e * h
+        - 6 * e * x * z
+        + 3 * h * x * y
+        + 12 * x * y**2
+        + 3 * x * z
+        + y,
+        -x**3 * z - 3 * x**2 * y + 2 * x,
+        a - e**2 - 2 * e * x * y,
+        b + x * y * z + 3 * y**2,
+        a * z - b * e + b * x * y + d + 3 * e * z - 3 * x * y * z - 7 * y**2,
+        e + x * y,
+        e * x * z + 3 * e * y + h - x**2 * y * z - 3 * x * y**2 - 2 * x * z,
+    ]
+)
+
+carrier_a8 = a + x**2 * y**2
+carrier_b8 = b + x * y * z + 3 * y**2
+carrier_d8 = d + x * y * (b - 3 * z) + a * z - e * (b - 3 * z) - 7 * y**2
+carrier_e8 = e + x * y
+carrier_h8 = h - (x * z + 3 * y) * (x * y - e) - 2 * x * z
+
+g8_from_factorization = s.Matrix(
+    [
+        f1 - carrier_a8 * carrier_b8 + carrier_d8 * carrier_e8,
+        f2 + 3 * carrier_h8 * carrier_e8,
+        f3,
+        carrier_a8 - carrier_e8**2,
+        carrier_b8,
+        carrier_d8,
+        carrier_e8,
+        carrier_h8,
+    ]
+).applyfunc(s.expand)
+
+assert g8_from_factorization == g8
+assert degree_vector(g8, v8) == [3, 4, 4, 3, 3, 3, 2, 4]
+
+# Independent exact block-determinant check for the expanded 8 x 8 Jacobian.
+jacobian8 = g8.jacobian(v8)
+j8_xx = jacobian8[:3, :3]
+j8_xw = jacobian8[:3, 3:]
+j8_wx = jacobian8[3:, :3]
+j8_ww = jacobian8[3:, 3:]
+
+assert s.expand(j8_ww.det()) == 1
+schur8 = (j8_xx - j8_xw * j8_ww.inv() * j8_wx).applyfunc(s.expand)
+assert schur8 == f.jacobian(v3)
+assert s.expand(s.det(schur8)) == -2
+
+points8 = [
+    (0, 0, -R(1, 4), 0, 0, 0, 0, 0),
+    (1, -R(3, 2), R(13, 2), -R(9, 4), 3, -R(153, 8), R(3, 2), 7),
+    (-1, R(3, 2), R(13, 2), -R(9, 4), 3, -R(153, 8), R(3, 2), -7),
+]
+image8 = certify_collision(g8, v8, points8)
+
 # Seven-register stable reduction: dimension 10, degree 3.
 v10 = (x, y, z, a, b, c, d, e, h, q)
 g10 = s.Matrix(
@@ -158,14 +231,14 @@ assert degree_vector(g10, v10) == [3, 3, 3, 3, 3, 2, 3, 2, 3, 2]
 
 # Exact block determinant calculation for the full symbolic 10 x 10 Jacobian.
 jacobian10 = g10.jacobian(v10)
-j_xx = jacobian10[:3, :3]
-j_xw = jacobian10[:3, 3:]
-j_wx = jacobian10[3:, :3]
-j_ww = jacobian10[3:, 3:]
+j10_xx = jacobian10[:3, :3]
+j10_xw = jacobian10[:3, 3:]
+j10_wx = jacobian10[3:, :3]
+j10_ww = jacobian10[3:, 3:]
 
-assert s.expand(j_ww.det()) == 1
-schur = (j_xx - j_xw * j_ww.inv() * j_wx).applyfunc(s.expand)
-assert s.expand(s.det(schur)) == -2
+assert s.expand(j10_ww.det()) == 1
+schur10 = (j10_xx - j10_xw * j10_ww.inv() * j10_wx).applyfunc(s.expand)
+assert s.expand(s.det(schur10)) == -2
 
 points10 = [
     (0, 0, -R(1, 4), 0, 0, 0, 0, 0, 0, 0),
@@ -178,5 +251,6 @@ print("Exact certificates passed")
 print(f"  C^3  degree 7: degrees {degree_vector(f, v3)}, common image {image3}")
 print(f"  C^4  degree 6: degrees {degree_vector(g4, v4)}, common image {image4}")
 print(f"  C^5  degree 5: degrees {degree_vector(g5, v5)}, common image {image5}")
+print(f"  C^8  degree 4: degrees {degree_vector(g8, v8)}, common image {image8}")
 print(f"  C^10 degree 3: degrees {degree_vector(g10, v10)}, common image {image10}")
 print("  Jacobian determinant of every map: -2")
