@@ -1,0 +1,83 @@
+{
+  "schema": "jacobian.cubic_homogeneous_map.v1",
+  "coefficient_field": "QQ",
+  "primary_seed": {
+    "repository": "AndreasFinke/jacobian-10d",
+    "path": "CONSTRUCTIONS.md"
+  },
+  "variables": [
+    "x", "y", "z", "a", "b", "c", "d", "e", "h", "q",
+    "w1", "w2", "w3", "w4", "w5", "w6", "w7", "tau"
+  ],
+  "components": [
+    "-a*b*tau + d*e*tau + tau**2*w1 + 4*tau*y**2 + x",
+    "-3*a*c*tau + 3*e*h*tau + tau**2*w2 + 3*tau*x*z/2 + y",
+    "c*q*tau + tau**2*w3 + z",
+    "a - e**2*tau + tau**2*w4",
+    "b + tau**2*w5 + 3*tau*y**2",
+    "c + tau*x*z/2",
+    "a*tau*x - b*e*tau + d + 3*e*tau*x + tau**2*w6 - 7*tau*y**2",
+    "e + tau*y*z/2",
+    "-c*e*tau + 3*e*tau*y + h + tau**2*w7 - tau*x*z",
+    "q + tau*z**2/4",
+    "-a*e*x + 3*a*y**2 + b*e**2 - d*y*z/2 - 3*e**2*x + 7*e*y**2 + w1 - 3*x*y*z/2",
+    "3*a*x*z/2 + 3*c*e**2 - 9*e**2*y + 3*e*x*z - 3*h*y*z/2 + w2 - 6*y**2*z",
+    "-c*z**2/4 - q*x*z/2 + w3 + 3*y*z**2/4",
+    "e*y*z + w4",
+    "w5 - x*y*z/2",
+    "-b*y*z/2 + w6 + 3*x*y*z/2",
+    "-c*y*z/2 + w7 + 3*y**2*z/2",
+    "tau"
+  ],
+  "R2": [
+    "-a*b + d*e + 4*y**2",
+    "-3*a*c + 3*e*h + 3*x*z/2",
+    "c*q",
+    "-e**2",
+    "3*y**2",
+    "x*z/2",
+    "a*x - b*e + 3*e*x - 7*y**2",
+    "y*z/2",
+    "-c*e + 3*e*y - x*z",
+    "z**2/4"
+  ],
+  "gamma": [
+    "a*e*x - 3*a*y**2 - b*e**2 + d*y*z/2 + 3*e**2*x - 7*e*y**2 + 3*x*y*z/2",
+    "-3*a*x*z/2 - 3*c*e**2 + 9*e**2*y - 3*e*x*z + 3*h*y*z/2 + 6*y**2*z",
+    "c*z**2/4 + q*x*z/2 - 3*y*z**2/4",
+    "-e*y*z",
+    "x*y*z/2",
+    "b*y*z/2 - 3*x*y*z/2",
+    "c*y*z/2 - 3*y**2*z/2"
+  ],
+  "B": [
+    [1,0,0,0,0,0,0],
+    [0,1,0,0,0,0,0],
+    [0,0,1,0,0,0,0],
+    [0,0,0,1,0,0,0],
+    [0,0,0,0,1,0,0],
+    [0,0,0,0,0,0,0],
+    [0,0,0,0,0,1,0],
+    [0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,1],
+    [0,0,0,0,0,0,0]
+  ],
+  "collision_points": [
+    ["-1/4","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1"],
+    ["13/2","-3/2","2","-9/4","3","-13/2","-153/8","3/2","7","-1","99/16","-45/8","-17/2","9/2","-39/4","99/4","3","1"],
+    ["13/2","3/2","-2","-9/4","3","13/2","-153/8","3/2","-7","-1","99/16","45/8","17/2","9/2","-39/4","99/4","-3","1"]
+  ],
+  "common_image": ["-1/4","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1"],
+  "certificate": {
+    "source_linear_determinant": "-1/2",
+    "public_jacobian_determinant": -2,
+    "normalized_jacobian_determinant": 1,
+    "cubic_coordinate_span_rank": 7,
+    "N_determinant_identity": "det(I+s*J_N)=1",
+    "homogeneous_map_dimension": 18,
+    "homogeneous_map_degree": 3,
+    "homogeneous_map_jacobian_determinant": 1,
+    "generic_degree": 3,
+    "collision_size": 3
+  }
+}
