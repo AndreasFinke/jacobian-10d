@@ -15,3 +15,4 @@ jobs:
           cache: pip
       - run: python -m pip install -r requirements.txt
       - run: python verify_all.py
+      - run: python verify_cubic_homogeneous18.py --output cubic_homogeneous18.json
