@@ -1,0 +1,172 @@
+// Independent exact Singular certificate for the 18D map.
+ring R = 0,(x,y,z,a,b,c,d,e,h,q,w1,w2,w3,w4,w5,w6,w7,tau,s),dp;
+
+proc requireZero(poly value, string label)
+{
+  if (value != 0)
+  {
+    print("FAIL "+label);
+    print(value);
+    quit;
+  }
+  print("PASS "+label);
+}
+
+proc jacobianFirst(ideal values, int columns)
+{
+  matrix answer[size(values)][columns];
+  int i,j;
+  for (i=1; i<=size(values); i++)
+  {
+    for (j=1; j<=columns; j++)
+    {
+      answer[i,j]=diff(values[i],var(j));
+    }
+  }
+  return(answer);
+}
+
+proc evalFirst(poly value, list point, int count)
+{
+  int j;
+  for (j=count; j>=1; j--)
+  {
+    value=subst(value,var(j),poly(point[j]));
+  }
+  return(value);
+}
+
+ideal Q =
+  -a*b+d*e+4*y*y,
+  -3*a*c+3*e*h+3*x*z/2,
+  c*q,
+  -e*e,
+  3*y*y,
+  x*z/2,
+  a*x-b*e+3*e*x-7*y*y,
+  y*z/2,
+  -c*e+3*e*y-x*z,
+  z*z/4;
+
+ideal gamma =
+  a*e*x-3*a*y*y-b*e*e+d*y*z/2+3*e*e*x-7*e*y*y+3*x*y*z/2,
+  -3*a*x*z/2-3*c*e*e+9*e*e*y-3*e*x*z+3*h*y*z/2+6*y*y*z,
+  c*z*z/4+q*x*z/2-3*y*z*z/4,
+  -e*y*z,
+  x*y*z/2,
+  b*y*z/2-3*x*y*z/2,
+  c*y*z/2-3*y*y*z/2;
+
+ideal R3 = gamma[1],gamma[2],gamma[3],gamma[4],gamma[5],0,gamma[6],0,gamma[7],0;
+ideal Xid = x,y,z,a,b,c,d,e,h,q;
+ideal W = w1,w2,w3,w4,w5,w6,w7;
+ideal BW = w1,w2,w3,w4,w5,0,w6,0,w7,0;
+ideal f;
+int i,j;
+for (i=1; i<=10; i++) { f[i]=Xid[i]+Q[i]+R3[i]; }
+
+// Reconstruct the public formula after the simultaneous source-linear change
+// (x_old,y_old,z_old,c_old)=(z/2,y,x,c-3y).
+ideal publicNormalized =
+  -a*b+a*e*x-3*a*y*y-b*e*e+d*e+d*z*y/2+3*e*e*x-7*e*y*y+3*z*y*x/2+4*y*y+x,
+  -3*a*(c-3*y)-3*a*z*x/2-9*a*y-3*(c-3*y)*e*e+3*e*h-6*e*z*x/2+3*h*z*y/2+12*z*y*y/2+3*z*x/2+y,
+  (c-3*y)*q+(c-3*y)*z*z/4+q*z*x/2+3*q*y+z,
+  a-e*e-e*z*y,
+  b+z*y*x/2+3*y*y,
+  (c-3*y)+z*x/2+3*y,
+  a*x-b*e+b*z*y/2+d+3*e*x-3*z*y*x/2-7*y*y,
+  e+z*y/2,
+  -(c-3*y)*e+(c-3*y)*z*y/2+h-z*x,
+  q+z*z/4;
+for (i=1; i<=10; i++) { requireZero(publicNormalized[i]-f[i],"public normalization component "+string(i)); }
+
+matrix Jf=jacobianFirst(f,10);
+requireZero(det(Jf)-1,"direct normalized 10D determinant");
+
+// Seven witness monomials give a nonzero 7x7 minor of the gamma coefficient matrix.
+proc coefficientAt(poly value, list powers)
+{
+  int ii,jj,denomint;
+  denomint=1;
+  for (ii=1; ii<=10; ii++)
+  {
+    for (jj=1; jj<=powers[ii]; jj++) { value=diff(value,var(ii)); denomint=denomint*jj; }
+  }
+  for (ii=10; ii>=1; ii--) { value=subst(value,var(ii),0); }
+  return(value/denomint);
+}
+list m1=0,0,0,0,0,1,0,2,0,0;
+list m2=0,0,0,0,1,0,0,2,0,0;
+list m3=0,0,2,0,0,1,0,0,0,0;
+list m4=0,1,1,0,0,0,0,1,0,0;
+list m5=0,1,1,0,0,1,0,0,0,0;
+list m6=0,1,1,0,1,0,0,0,0,0;
+list m7=1,1,1,0,0,0,0,0,0,0;
+list witnesses=m1,m2,m3,m4,m5,m6,m7;
+matrix cubicMinor[7][7];
+for (i=1; i<=7; i++)
+{
+  for (j=1; j<=7; j++) { cubicMinor[i,j]=coefficientAt(gamma[i],witnesses[j]); }
+}
+requireZero(det(cubicMinor)+3/32,"rank-seven cubic witness minor");
+
+// Build and inspect I+s J_N directly.
+ideal N;
+for (i=1; i<=10; i++) { N[i]=Q[i]+BW[i]; }
+for (i=1; i<=7; i++) { N[10+i]=-gamma[i]; }
+matrix JN=jacobianFirst(N,17);
+matrix IdPlusJN=s*JN;
+for (i=1; i<=17; i++) { IdPlusJN[i,i]=IdPlusJN[i,i]+1; }
+requireZero(det(IdPlusJN)-1,"direct det(I+s J_N)");
+
+// Build and inspect the displayed 18-variable map directly.
+ideal G;
+for (i=1; i<=10; i++) { G[i]=Xid[i]+tau*Q[i]+tau*tau*BW[i]; }
+for (i=1; i<=7; i++) { G[10+i]=W[i]-gamma[i]; }
+G[18]=tau;
+matrix JG=jacobianFirst(G,18);
+requireZero(det(JG)-1,"direct displayed 18D determinant");
+
+// Euler's identity is an exact homogeneity test for every nonlinear entry.
+poly nonlinear,euler;
+for (i=1; i<=18; i++)
+{
+  nonlinear=G[i]-var(i);
+  euler=-3*nonlinear;
+  for (j=1; j<=18; j++) { euler=euler+var(j)*diff(nonlinear,var(j)); }
+  requireZero(euler,"cubic homogeneity component "+string(i));
+}
+
+// Three exact lifted collision points.
+list p0=-1/4,0,0,0,0,0,0,0,0,0;
+list pp=13/2,-3/2,2,-9/4,3,-13/2,-153/8,3/2,7,-1;
+list pm=13/2,3/2,-2,-9/4,3,13/2,-153/8,3/2,-7,-1;
+list sourcePoints=p0,pp,pm;
+list point;
+poly value;
+for (int k=1; k<=3; k++)
+{
+  point=sourcePoints[k];
+  for (j=1; j<=7; j++) { point[size(point)+1]=evalFirst(gamma[j],sourcePoints[k],10); }
+  point[size(point)+1]=1;
+  for (i=1; i<=18; i++)
+  {
+    value=evalFirst(G[i],point,18);
+    if (i==1) { requireZero(value+1/4,"collision point "+string(k)+" component 1"); }
+    else
+    {
+      if (i==18) { requireZero(value-1,"collision point "+string(k)+" tau"); }
+      else { requireZero(value,"collision point "+string(k)+" component "+string(i)); }
+    }
+  }
+}
+
+// The generic-degree target shear is checked componentwise.
+ideal BZ=G[11],G[12],G[13],G[14],G[15],0,G[16],0,G[17],0;
+for (i=1; i<=10; i++)
+{
+  requireZero(G[i]-tau*tau*BZ[i]-tau*tau*R3[i]-Xid[i]-tau*Q[i],"stable target shear component "+string(i));
+}
+
+print("CERTIFIED independent Singular audit: dimension 18, det=1, generic degree inherited as 3");
+quit;
