@@ -1,6 +1,8 @@
 # Explicit degree reductions of the three-dimensional Jacobian counterexample
 
 [![Exact verification](https://github.com/AndreasFinke/jacobian-10d/actions/workflows/verify.yml/badge.svg)](https://github.com/AndreasFinke/jacobian-10d/actions/workflows/verify.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Cite this repository](https://img.shields.io/badge/Cite-CITATION.cff-blue.svg)](CITATION.cff)
 
 This repository gives exact certificates for several polynomial maps obtained
 from the known three-dimensional degree-seven counterexample by stabilization
@@ -11,6 +13,17 @@ It contains two related results:
 1. a dimension-degree ladder ending with a general total-degree-three map in
    dimension ten;
 2. a stricter cubic-homogeneous map of the form $I+H_3$ in dimension eighteen.
+
+## Research provenance
+
+This is a **human-directed, AI-assisted research artifact**. AI systems helped
+with candidate generation, symbolic algebra, exact-verifier code, adversarial
+checking, and drafting. Andreas Finke selected and reviewed the public claims
+and is responsible for this repository. Every stated result is backed by an
+exact, rerunnable certificate rather than trust in model output.
+
+See [Research provenance and AI assistance](RESEARCH_PROVENANCE.md) for the
+full disclosure and verification policy.
 
 ## Dimension-degree ladder
 
@@ -135,6 +148,17 @@ GitHub Actions runs both Python verifiers on every push and pull request.
 - [`verify_cubic_homogeneous18.sing`](verify_cubic_homogeneous18.sing) — independent Singular check of the displayed $18\times18$ Jacobian
 - [`cubic10_map.json`](cubic10_map.json) — machine-readable ten-dimensional map and collision
 - [`cubic_homogeneous18.json`](cubic_homogeneous18.json) — machine-readable homogeneous map and collision
+- [`RESEARCH_PROVENANCE.md`](RESEARCH_PROVENANCE.md) — human/AI roles and verification policy
+- [`CITATION.cff`](CITATION.cff) — machine-readable citation metadata
+- [`LICENSE`](LICENSE) — MIT license
+
+## Citation and license
+
+Use the metadata in [`CITATION.cff`](CITATION.cff) and identify the exact
+commit or release used. GitHub exposes these metadata through its **Cite this
+repository** interface.
+
+The repository is released under the [MIT License](LICENSE).
 
 ## Claim boundary
 
