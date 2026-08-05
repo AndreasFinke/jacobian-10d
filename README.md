@@ -1,5 +1,7 @@
 # Explicit degree reductions of the three-dimensional Jacobian counterexample
 
+[![Exact verification](https://github.com/AndreasFinke/jacobian-10d/actions/workflows/verify.yml/badge.svg)](https://github.com/AndreasFinke/jacobian-10d/actions/workflows/verify.yml)
+
 This repository gives exact certificates for several polynomial maps obtained
 from the known three-dimensional degree-seven counterexample by stabilization
 and polynomial changes of source and target coordinates.
