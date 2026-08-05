@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use these constructions or verification artifacts, please cite this repository."
+title: "Explicit degree reductions of the three-dimensional Jacobian counterexample"
+type: software
+authors:
+  - given-names: "Andreas"
+    family-names: "Finke"
+abstract: >-
+  Exact polynomial constructions and machine-checkable certificates derived
+  from the known three-dimensional Jacobian counterexample, including a
+  total-degree-three map in dimension ten and a cubic-homogeneous map in
+  dimension eighteen.
+repository-code: "https://github.com/AndreasFinke/jacobian-10d"
+url: "https://github.com/AndreasFinke/jacobian-10d"
+license: MIT
+keywords:
+  - Jacobian conjecture
+  - polynomial maps
+  - algebraic geometry
+  - computer algebra
+  - symbolic verification
+  - AI-assisted research
