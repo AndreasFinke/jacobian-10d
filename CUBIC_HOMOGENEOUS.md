@@ -1,6 +1,6 @@
 # Cubic-homogeneous form in dimension 18
 
-**Updated:** 4 August 2026  
+**Updated:** 5 August 2026  
 **Status:** exact characteristic-zero certificate; no claim of global minimality
 
 ## What “cubic homogeneous” means
@@ -126,7 +126,7 @@ The fully expanded coordinates are stored in
 After the exact linear source normalization
 
 ```math
-(x_{\rm old},y_{\rm old},z_{\rm old},c_{\rm old})
+(x_{\mathrm{old}},y_{\mathrm{old}},z_{\mathrm{old}},c_{\mathrm{old}})
 =
 \left(\frac z2,y,x,c-3y\right),
 ```
@@ -173,7 +173,7 @@ I_{17}+sJ_N
 to
 
 ```math
-\operatorname{diag}(Jf_s,I_7).
+\mathrm{diag}(Jf_s,I_7).
 ```
 
 The verifier performs this matrix identity coefficient by coefficient. Hence
@@ -259,8 +259,13 @@ cubic map.
 
 A dated primary-source audit found earlier explicit cubic-homogeneous formulas
 in dimensions $23$ and $24$, and no public explicit example in dimension at
-most $17$. This is a priority search result, not a proof that dimension $18$ is
-minimal or that no unindexed construction exists.
+most $17$. The comparison used
+[the public 24-dimensional construction](https://github.com/wtho704/explicit-cubic-homogeneous-jacobian-counterexample),
+[the public 23-dimensional lift certificate](https://github.com/Mnehmos/llm-driven-proof-search/blob/998b559137867394fb98299f90f2a803e174d72d/jacobian%20counter/certificates/cubic_homogeneous_23_lift.py),
+and [AGNT's 22-dimensional mixed quadratic/cubic construction](https://agnt.gg/whitepapers/machine-verified-corollary-mining-jacobian-conjecture.html),
+which is not cubic homogeneous. This is a dated priority search result, not a
+proof that dimension $18$ is minimal or that no private or unindexed
+construction exists.
 
 ## Verification
 
