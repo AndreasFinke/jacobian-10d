@@ -23,7 +23,8 @@ and is responsible for this repository. Every stated result is backed by an
 exact, rerunnable certificate rather than trust in model output.
 
 See [Research provenance and AI assistance](RESEARCH_PROVENANCE.md) for the
-full disclosure and verification policy.
+full disclosure and verification policy. Automated contributors should also
+follow the public-release rules in [`AGENTS.md`](AGENTS.md).
 
 ## Dimension-degree ladder
 
@@ -149,6 +150,7 @@ GitHub Actions runs both Python verifiers on every push and pull request.
 - [`cubic10_map.json`](cubic10_map.json) — machine-readable ten-dimensional map and collision
 - [`cubic_homogeneous18.json`](cubic_homogeneous18.json) — machine-readable homogeneous map and collision
 - [`RESEARCH_PROVENANCE.md`](RESEARCH_PROVENANCE.md) — human/AI roles and verification policy
+- [`AGENTS.md`](AGENTS.md) — instructions for automated contributors
 - [`CITATION.cff`](CITATION.cff) — machine-readable citation metadata
 - [`LICENSE`](LICENSE) — MIT license
 
