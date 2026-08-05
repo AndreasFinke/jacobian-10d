@@ -1,6 +1,7 @@
 # Constructions and exact certificates
 
-**Updated:** 29 July 2026  
+**First public certificate in this series:** 27 July 2026 ($G_{10}$)  
+**Additional reductions first published:** 28 July 2026 ($G_4,G_5$); 29 July 2026 ($G_8$)  
 **Status:** exact characteristic-zero certificates; no claim of optimality or publication priority
 
 This document is self-contained. It starts from the known three-dimensional counterexample and gives four polynomially stably equivalent maps with lower total degree in higher dimension.
