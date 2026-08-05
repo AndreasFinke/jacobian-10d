@@ -1,6 +1,6 @@
 # Cubic-homogeneous form in dimension 18
 
-**Updated:** 5 August 2026  
+**First published:** 4 August 2026  
 **Status:** exact characteristic-zero certificate; no claim of global minimality
 
 ## What “cubic homogeneous” means
